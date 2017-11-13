@@ -117,7 +117,15 @@ var buyProduct = function() {
                       ],
                       function(err, res) {
                         if (err) throw err;
-
+                        console.log(
+                          "\nCongrats! You just bought " +
+                            selectedQty +
+                            " units of " +
+                            selectedProduct +
+                            " for $" +
+                            total +
+                            ". Enjoy your purchase!"
+                        );
                         endConnection();
                       }
                     );

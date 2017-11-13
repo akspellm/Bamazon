@@ -1,6 +1,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
-var buy = require('./customer.js')
+var buy = require("./customer.js");
+var manager = require("./manager.js");
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -13,25 +14,29 @@ var connection = mysql.createConnection({
 });
 
 function endConnection() {
-    connection.end();
-  };
+  connection.end();
+}
 
 connection.connect(function(err) {
-  if (err) throw err;
-  console.log("connected as " + connection.threadId);
+  inquirer
+    .prompt([
+      {
+        name: "userType",
+        message: "What would you like to sign in as:",
+        type: "list",
+        choices: ["customer", "manager"]
+      }
+    ])
+    .then(function(res) {
+      if (res.userType === "customer") {
+        if (err) throw err;
+        console.log("connected as " + connection.threadId);
 
-  buy.buyProduct();
-  endConnection();
+        buy.buyProduct();
+        endConnection();
+      } else if (res.userType === "manager") {
+        manager.managerView();
+        endConnection();
+      }
+    });
 });
-
-
-function displayProducts() {
-  console.log("This is what we have for sale today:");
-  connection.query("SELECT * FROM products", function(err, res) {
-    if (err) throw err;
-
-    for (var x in res) {
-      console.log("\n*** Item: " + res[x].product_name + " - $" + res[x].price);
-    }
-  });
-}
