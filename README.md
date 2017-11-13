@@ -8,20 +8,20 @@ Command line app that simulates a retail inventory management system with both a
 
 ## Prerequisites
 
-*Install node
-*Install npm
-*If using Windows, install a Bash Shell
+* Install node
+* Install npm
+* If using Windows, install a Bash Shell
 
 
 ## Installing
 
-*Clone repository onto your machine
-*Run 'npm install' to install dependencies
+* Clone repository onto your machine
+* Run 'npm install' to install dependencies
 
 
 ## Deployment
 
-*Use node to run bamazon.js in your terminal
+Use node to run bamazon.js in your terminal
 
 
 ## Built With
