@@ -119,11 +119,11 @@ var buyProduct = function() {
                         if (err) throw err;
                         console.log(
                           "\nCongrats! You just bought " +
-                            selectedQty +
+                            number +
                             " units of " +
                             selectedProduct +
                             " for $" +
-                            total +
+                            parseFloat(total).toFixed(2) +
                             ". Enjoy your purchase!"
                         );
                         endConnection();

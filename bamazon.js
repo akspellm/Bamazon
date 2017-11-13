@@ -30,7 +30,6 @@ connection.connect(function(err) {
     .then(function(res) {
       if (res.userType === "customer") {
         if (err) throw err;
-        console.log("connected as " + connection.threadId);
 
         buy.buyProduct();
         endConnection();
